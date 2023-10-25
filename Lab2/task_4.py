@@ -1,4 +1,7 @@
 a = int(input())
 b = int(input())
+c = int(input())
 
-print(b%a)
+maximum = max(a, b, c)
+
+print(maximum)
