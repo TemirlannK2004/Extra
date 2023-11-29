@@ -1,14 +1,19 @@
 class Person:
     def __init__(self, first_name: str, last_name: str) -> None:
-        self.first_name = first_name
-        self.last_name = last_name
+        self.__first_name = first_name
+        self.__last_name = last_name
+
+    def get_first_name(self) -> str:
+        return self.__first_name
+
+    def get_last_name(self) -> str:
+        return self.__last_name
 
 
 class Driver(Person):
     def __init__(self, first_name: str, last_name: str, experience: int) -> None:
         super().__init__(first_name, last_name)
         self.experience = experience
-
 
 class Engine:
     def __init__(self, power: int, manufacturer: str) -> None:
@@ -40,7 +45,7 @@ class Car:
         return f"Car Brancd: {self.brand}\n" \
                f"Car Class: {self.car_class}\n" \
                f"Car Weight: {self.weight} kg\n" \
-               f"Car Driver: {self.driver.first_name} {self.driver.last_name}\n" \
+               f"Car Driver: {self.driver.get_first_name()} {self.driver.get_last_name()}\n" \
                f"Car Engine: {self.engine.power} horsepower, Manufacturer Country: {self.engine.manufacturer}"
     
 class Lorry(Car):
@@ -52,7 +57,7 @@ class Lorry(Car):
         return f"Car Brancd: {self.brand}\n" \
                f"Car Class: {self.car_class}\n" \
                f"Car Weight: {self.weight} kg\n" \
-               f"Car Driver: {self.driver.first_name} {self.driver.last_name}\n" \
+               f"Car Driver: {self.driver.get_first_name()} {self.driver.get_last_name()}\n" \
                f"Car Engine: {self.engine.power} horsepower, Manufacturer Country: {self.engine.manufacturer}\n"\
                f"Max Capacity: {self.capacity} tn\n"
 
@@ -66,14 +71,14 @@ class SportCar(Car):
         return f"Car Brancd: {self.brand}\n" \
                f"Car Class: {self.car_class}\n" \
                f"Car Weight: {self.weight} kg\n" \
-               f"Car Driver: {self.driver.first_name} {self.driver.last_name}\n" \
+               f"Car Driver: {self.driver.get_first_name()} {self.driver.get_last_name()}\n" \
                f"Car Engine: {self.engine.power} horsepower, Manufacturer Country: {self.engine.manufacturer}\n"\
                f"Max Speed: {self.max_speed} km/h\n"
 
 
 car_engine = Engine(100, 'Germany')
 person = Person('Michael', 'Schumacher')
-driver = Driver(person.first_name, person.last_name, 10)
+driver = Driver(person.get_first_name(), person.get_last_name(), 10)
 car = Car(brand='Ferrari', car_class="bolid", weight=500, driver=driver, engine=car_engine)
 car_camaz = Car(brand='Kamaz', car_class='Kamaz Class', weight=10000, driver=driver, engine=car_engine)
 ferrari_f40 = SportCar(car.brand, car.car_class, car.weight, driver, car.engine, max_speed=300)
