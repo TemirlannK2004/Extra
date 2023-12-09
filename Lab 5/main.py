@@ -54,12 +54,7 @@ class Lorry(Car):
         self.capacity = capacity
 
     def __str__(self) -> str:
-        return f"Car Brancd: {self.brand}\n" \
-               f"Car Class: {self.car_class}\n" \
-               f"Car Weight: {self.weight} kg\n" \
-               f"Car Driver: {self.driver.get_first_name()} {self.driver.get_last_name()}\n" \
-               f"Car Engine: {self.engine.power} horsepower, Manufacturer Country: {self.engine.manufacturer}\n"\
-               f"Max Capacity: {self.capacity} tn\n"
+        return super().__str__() + f"Max Capacity: {self.capacity} tn\n"
 
 
 class SportCar(Car):
@@ -68,12 +63,7 @@ class SportCar(Car):
         self.max_speed = max_speed
 
     def __str__(self) -> str:
-        return f"Car Brancd: {self.brand}\n" \
-               f"Car Class: {self.car_class}\n" \
-               f"Car Weight: {self.weight} kg\n" \
-               f"Car Driver: {self.driver.get_first_name()} {self.driver.get_last_name()}\n" \
-               f"Car Engine: {self.engine.power} horsepower, Manufacturer Country: {self.engine.manufacturer}\n"\
-               f"Max Speed: {self.max_speed} km/h\n"
+        return super().__str__() + f"Max Speed: {self.max_speed} km/h\n"
 
 
 car_engine = Engine(100, 'Germany')
