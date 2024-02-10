@@ -1,0 +1,145 @@
+{
+	"info": {
+		"_postman_id": "f8f5dc9c-4271-44a2-a30a-6c306c817365",
+		"name": "ExtraLab",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "28543770"
+	},
+	"item": [
+		{
+			"name": "user_service",
+			"item": [
+				{
+					"name": "Register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\":\"John01\",\n    \"first_name\":\"John\",\n    \"last_name\":\"Doe\",\n    \"password\":\"123456789\",\n    \"re_password\":\"123456789\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{user_service_url}}/register/"
+					},
+					"response": []
+				},
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\":\"John01\",\n    \"password\":\"123456789\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{user_service_url}}/login/"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "shop_service",
+			"item": [
+				{
+					"name": "All categories",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.globals.get(\"timings\")",
+									"pm.globals.unset(\"timings\")"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "{{shop_service_url}}/categories/"
+					},
+					"response": []
+				},
+				{
+					"name": "products-by-category",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "product-buy",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzA3NTA0ODE4LCJpYXQiOjE3MDc1MDQ1MTgsImp0aSI6IjViZmM1YjA5OTEwOTQ2Y2RiY2YxMzQ0NDM3OWJjNGI5IiwidXNlcl9pZCI6ImVkYTM5ZDE2LWRkMGUtNGFlZC1iZmUzLTM3YjdlOTJjYzQ3MCJ9.pi29H43pPg_Mf5xwhaCRuPn2Ny2pAift4-g5s3SWVOg"
+							}
+						},
+						"method": "POST",
+						"header": [],
+						"url": "{{shop_service_url}}/product/1/buy/"
+					},
+					"response": []
+				},
+				{
+					"name": "get-products",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "create-product",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n         \"name\": \"Tedsf\",\n        \"price\": 12.22,\n        \"description\": \"description2\",\n        \"quantity\": 3,\n        \"category_id\": 2\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{shop_service_url}}/products/"
+					},
+					"response": []
+				},
+				{
+					"name": "user-orders",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "{{shop_service_url}}/user/eda39d16-dd0e-4aed-bfe3-37b7e92cc470/orders/"
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"variable": [
+		{
+			"key": "user_service_url",
+			"value": "http://127.0.0.1:8000/api/v1/users"
+		},
+		{
+			"key": "shop_service_url",
+			"value": "http://127.0.0.1:8000/api/v1/shop"
+		}
+	]
+}
